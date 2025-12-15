@@ -142,19 +142,59 @@
     If you share it on social media, we would really appreciate it if you mention/tag us:
   </p>
 
-  <div class="mt-2 flex flex-wrap gap-2">
-    <a id="shareFb" href="https://www.facebook.com/ieeecsseu" target="_blank" rel="noreferrer"
-       class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 no-underline hover:bg-white/10 transition">
-      <i class="fab fa-facebook text-blue-300"></i>
-      Facebook
-    </a>
+<div class="mt-2 flex flex-wrap gap-2">
+  <!-- Facebook Share -->
+  <a
+    href="#"
+    onclick="
+      event.preventDefault();
+      const url = document.getElementById('certOpen').href;
+      if(!url){ alert('Certificate link not ready yet'); return; }
+      window.open(
+        'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url),
+        '_blank'
+      );
+    "
+    class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 no-underline hover:bg-white/10 transition"
+  >
+    <i class="fab fa-facebook text-blue-300"></i>
+    Facebook
+  </a>
 
-    <a id="shareLi" href="https://www.linkedin.com/company/ieeecsseu/" target="_blank" rel="noreferrer"
-       class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 no-underline hover:bg-white/10 transition">
-      <i class="fab fa-linkedin text-sky-300"></i>
-      LinkedIn
-    </a>
-  </div>
+  <!-- LinkedIn Share -->
+  <a
+    href="#"
+    onclick="
+      event.preventDefault();
+      const url = document.getElementById('certOpen').href;
+      if(!url){ alert('Certificate link not ready yet'); return; }
+      window.open(
+        'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url),
+        '_blank'
+      );
+    "
+    class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 no-underline hover:bg-white/10 transition"
+  >
+    <i class="fab fa-linkedin text-sky-300"></i>
+    LinkedIn
+  </a>
+
+  <!-- Copy Certificate URL -->
+  <button
+    onclick="
+      const url = document.getElementById('certOpen').href;
+      if(!url){ alert('Certificate link not ready yet'); return; }
+      navigator.clipboard.writeText(url)
+        .then(() => alert('Certificate link copied to clipboard ✅'))
+        .catch(() => alert('Copy failed ❌'));
+    "
+    class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white no-underline hover:bg-white/10 transition"
+    type="button"
+  >
+    <i class="fa-solid fa-link"></i>
+    Copy Certificate URL
+  </button>
+</div>
 
   <p class="mt-2 text-xs text-white/60">
     Thank you for being with IEEE Computer Society SEU SBC.
@@ -429,5 +469,6 @@
         </div>
     </div>
 </body>
+
 
 </html>
